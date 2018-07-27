@@ -42,6 +42,10 @@ Game.renderPlayer = function() {
    let opposite = Mouse.x - Player.pos.x;
    let adjecent = Mouse.y - Player.pos.y;
    Game.drawImage(Game.playerImage, Player.pos, -Math.atan2(opposite * -1, adjecent * -1), Player.origin);
+   Game.canvasContext.fillStyle = "white";
+   Game.canvasContext.font = "20px Arial";
+   Game.canvasContext.fillText("Player.x : " + Player.pos.x, 10 , 30);
+   Game.canvasContext.fillText("Player.y : " + Player.pos.y, 10 , 60);
 }
 
 Game.update = function() {
@@ -72,7 +76,7 @@ Game.mainloop = function() {
     Game.clearScreen();
     Game.update();
     Game.render();
-    setInterval(Game.mainloop, 1000 / 60);
+    window.requestAnimationFrame(Game.mainloop);
 }
 
 document.addEventListener('DOMContentLoaded', Game.start);
@@ -84,22 +88,22 @@ const Player = {
     origin : {x : 50, y : 40 },
     velX : 0,
     velY : 0,
-    speed : 0.006,
+    speed : 5,
     bullets : []
 }
 
 Player.gameAreaCollision = function() {
-    if(Player.pos.x < 0)
-        Player.pos.x = 0;
-    else if(Player.pos.x > Game.canvas.width - Player.width)
-        Player.pos.x = Game.canvas.width - Player.width;
+    if(Player.pos.x < 42)
+        Player.pos.x = 42;
+    else if(Player.pos.x > 760)
+        Player.pos.x = 760;
     else
         Player.pos.x += Player.velX;
 
-    if(Player.y < 0)
-        Player.y = 0;
-    else if(Player.pos.y > Game.canvas.height - Player.height)
-        Player.pos.y = Game.canvas.height - Player.height;
+    if(Player.pos.y < 42)
+        Player.pos.y = 42;
+    else if(Player.pos.y > 560)
+        Player.pos.y = 560;
     else
     Player.pos.y += Player.velY;
 }
@@ -113,7 +117,7 @@ function Bullet(x_, y_, r){
     this.pos = { x : x_, y : y_},
     this.width = 5;
     this.height = 5;
-    this.speed = .05;
+    this.speed = 20;
     this.origin = { x : 2.5, y : 2.5 },
     this.r = r;
     this.velX = Math.sin(r) * this.speed;
