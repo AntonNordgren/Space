@@ -13,4 +13,6 @@ body {
     width: 1600px;
     height: 900px;
     left: 160px;
+    top: 30px;
+    border: solid white 2px;
 }

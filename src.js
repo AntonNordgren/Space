@@ -45,10 +45,8 @@ Game.drawImage = function (sprite, position, rotation, origin) {
 
 Game.renderPlayer = function() {
    let opposite = Mouse.x - Player.pos.x - 160;
-   let adjecent = Mouse.y - Player.pos.y;
+   let adjecent = Mouse.y - Player.pos.y - 30;
    Game.drawImage(Game.playerImage, Player.pos, -Math.atan2(opposite * -1, adjecent * -1), Player.origin);
-   //Game.canvasContext.fillStyle = "white";
-   //Game.canvasContext.font = "20px Arial";
    Game.canvasContext.fillText("Player.x : " + Player.pos.x, 10 , 30);
    Game.canvasContext.fillText("Player.y : " + Player.pos.y, 10 , 60);
 }
@@ -186,7 +184,7 @@ function handleMouseDown(evt) {
     Mouse.x = evt.pageX;
     Mouse.y = evt.pageY;
     let opposite = Mouse.x - Player.pos.x - 160;
-    let adjecent = Mouse.y - Player.pos.y;
+    let adjecent = Mouse.y - Player.pos.y - 30;
 
     Player.shoot(Math.atan2(opposite, adjecent));
 }
