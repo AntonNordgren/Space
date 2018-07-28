@@ -5,9 +5,12 @@
 }
 
 body {
-    background-color: #ffffff;
+    background-color: #000000;
 }
 
 #myCanvas {
-    width: 800px;
+    position: absolute;
+    width: 1600px;
+    height: 900px;
+    left: 160px;
 }
