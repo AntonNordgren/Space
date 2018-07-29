@@ -15,4 +15,5 @@ body {
     left: 160px;
     top: 30px;
     border: solid white 2px;
+    cursor : url(my-cursor.png) 20 20, default;
 }
